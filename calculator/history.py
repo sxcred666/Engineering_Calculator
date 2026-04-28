@@ -1,6 +1,7 @@
 import json 
 import os 
 
+# The History class manages the history of calculations performed by the calculator application. It allows adding new records, retrieving all records, retrieving the last n records, clearing the history, and saving/loading the history to/from a file in JSON format.
 class History:
      MAX_RECORDS = 1000 # maximum number of records to keep in history
 
