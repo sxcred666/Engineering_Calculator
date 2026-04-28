@@ -49,21 +49,21 @@ def factorial(n):
         print("Error: please enter numbers, not text")
         return None
     
-def sinus(x):
+def sin(x):
     try:
         return math.sin(x)
     except TypeError:
         print("Error: please enter numbers, not text")
         return None
     
-def cosinus(x):
+def cos(x):
     try:
         return math.cos(math.radians(x))
     except TypeError:
         print("Error: please enter numbers, not text")
         return None
     
-def tangens(x):
+def tan(x):
     try:
         if x % 180 == 90:
             raise ValueError("Tangent is undefined for this angle")
@@ -83,6 +83,13 @@ def modulus(x, y):
     except ValueError as e:
         print(f"Error: {e}")
         return None
+    except TypeError:
+        print("Error: please enter numbers, not text")
+        return None
+
+def exp(x):
+    try:
+        return math.exp(x)
     except TypeError:
         print("Error: please enter numbers, not text")
         return None
