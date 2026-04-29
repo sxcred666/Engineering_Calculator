@@ -51,7 +51,7 @@ def factorial(n):
     
 def sin(x):
     try:
-        return math.sin(x)
+        return math.sin(math.radians(x))
     except TypeError:
         print("Error: please enter numbers, not text")
         return None
