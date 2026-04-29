@@ -17,9 +17,6 @@ def sqrt(x):
     except ValueError as e:
         print(f"Error: {e}")
         return None
-    except TypeError:
-        print("Error: please enter numbers, not text")
-        return None
     
 def log(x, base=math.e):    
     try:
@@ -31,9 +28,6 @@ def log(x, base=math.e):
     except ValueError as e:
         print(f"Error: {e}")
         return None
-    except TypeError:
-        print("Error: please enter numbers, not text")
-        return None
     
 def factorial(n):
     try:
@@ -44,9 +38,6 @@ def factorial(n):
         return math.factorial(n)
     except ValueError as e:
         print(f"Error: {e}")
-        return None
-    except TypeError:
-        print("Error: please enter numbers, not text")
         return None
     
 def sin(x):
@@ -71,10 +62,16 @@ def tan(x):
     except ValueError as e:
         print(f"Error: {e}")
         return None 
-    except TypeError:
-        print("Error: please enter numbers, not text")
-        return None
     
+def cot(x):
+    try:
+        if x % 180 == 0:
+            raise ValueError("Cotangent is undefined for this angle")
+        return 1 / math.tan(math.radians(x))
+    except ValueError as e:
+        print(f"Error: {e}")
+        return None
+
 def modulus(x, y):
     try:
         if y == 0:
@@ -82,9 +79,6 @@ def modulus(x, y):
         return x % y
     except ValueError as e:
         print(f"Error: {e}")
-        return None
-    except TypeError:
-        print("Error: please enter numbers, not text")
         return None
 
 def exp(x):
