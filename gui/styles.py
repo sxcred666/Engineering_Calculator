@@ -1,0 +1,7 @@
+BACKGROUND_COLOR = "#1e1e2e"
+DISPLAY_COLOR = "#2a2a3e"
+TEXT_COLOR = "#ffffff"
+HISTORY_COLOR = "#8888aa"
+
+FONT_DISPLAY = ("Arial", 32, "bold")
+FONT_HISTORY = ("Arial", 14)

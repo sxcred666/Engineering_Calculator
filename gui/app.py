@@ -31,14 +31,14 @@ class CalculatorApp:
                                 padx=10, pady=(10, 0))
 
     def _build_main_display(self): # Create a label to display the current input and result of calculations. It is styled with a specific font, background color, and text color. The label is aligned to the right and has a fixed width. It is placed in the second row of the grid layout, spanning all columns, with padding around it.
-        self.display = tk.Label( 
+        self.display = tk.Label(
             self.window,
             text="0",
             font=FONT_DISPLAY,
-            bg=DISPLAY_COLOR
+            bg=DISPLAY_COLOR,
             fg=TEXT_COLOR,
             anchor="e",
-            width=20
+            width=20,
             padx=15
         )
         self.display.grid(row=1, column=0, columnspan=5, 
