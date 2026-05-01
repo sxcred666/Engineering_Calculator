@@ -43,9 +43,9 @@ class CalculatorApp:
         )
         self.display.grid(row=1, column=0, columnspan=5, 
                           padx=10, pady=(0, 10))
-        
-        def update_history(self, value):
-            self.display.config(text=str(value))
 
-        def run(self):
-            self.window.mainloop()
+    def update_history(self, value):
+        self.display.config(text=str(value))
+
+    def run(self):
+        self.window.mainloop()
