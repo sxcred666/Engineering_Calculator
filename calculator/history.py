@@ -1,52 +1,42 @@
-import json 
-import os 
+import json
+import os
 
-# The History class manages the history of calculations performed by the calculator application. It allows adding new records, retrieving all records, retrieving the last n records, clearing the history, and saving/loading the history to/from a file in JSON format.
 class History:
-     MAX_RECORDS = 1000 # maximum number of records to keep in history
+    MAX_RECORDS = 1000
 
-     def __init__(self, filename="history.json"):
-          #file name - names the file where the history will be stored
-          self.filename = filename
-          # records - a list that will hold the history of calculations
-          self.records = []
-          #load histrory from file if it exists
-          self.load()
+    def __init__(self, filename="history.json"):
+        self.filename = filename
+        self.records = []
+        self.load()
 
-     def add_record(self, expression, result):
-          """Adds a new record to the history."""
-          record = {
-               "expression": expression, # the mathematical expression that was calculated
-               "result": result # the result of the calculation
-          }
-          self.records.append(record) # add the new record to the list of records
-          self.save() # save the updated history to the file
+    def add_record(self, expression, result):
+        """Adds a new record to the history."""
+        record = {
+            "expression": expression,
+            "result": result
+        }
+        self.records.append(record)
+        if len(self.records) > self.MAX_RECORDS:
+            self.records = self.records[-self.MAX_RECORDS:]
+        self.save()
 
-     def get_all(self):
-          """Returns all records in the history."""
-          return self.records
-     
-     def get_last(self, n=5):
-          """Returns the last n records in the history."""
-          return self.records[-n:] # return the last n records from the list
-     
-     def clear(self):
-          """Clears the history."""
-          self.records = [] # reset the records list to an empty list
-          self.save() # save the cleared history to the file
+    def get_all(self):
+        return self.records
 
-     def save(self):
-          """Saves the history to a file."""
-          with open(self.filename, "w", encoding="utf-8") as f: # open the file in write mode
-               json.dump(self.records, f, ensure_ascii=False, indent=2) # write the records to the file in JSON format
+    def get_last(self, n=5):
+        return self.records[-n:]
 
-     def load(self):
-          """Loads the history from a file."""
-          if os.path.exists(self.filename): # check if the file exists
-               with open(self.filename, "r", encoding="utf-8") as f: # open the file in read mode
-                    self.records = json.load(f) # load the records from the file into the records list
-          else:
-               self.records = [] # if the file does not exist, initialize an empty records list
+    def clear(self):
+        self.records = []
+        self.save()
 
+    def save(self):
+        with open(self.filename, "w", encoding="utf-8") as f:
+            json.dump(self.records, f, ensure_ascii=False, indent=2)
 
-          
+    def load(self):
+        if os.path.exists(self.filename):
+            with open(self.filename, "r", encoding="utf-8") as f:
+                self.records = json.load(f)
+        else:
+            self.records = []
